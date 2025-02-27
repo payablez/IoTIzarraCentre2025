@@ -1,0 +1,6 @@
+# Control GPIO
+RPi.GPIO==0.7.1
+
+# Utilidades
+schedule==1.2.0
+python-dotenv==1.0.0 

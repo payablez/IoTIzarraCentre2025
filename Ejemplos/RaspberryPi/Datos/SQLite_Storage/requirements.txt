@@ -1,0 +1,12 @@
+# Base de datos
+SQLAlchemy==2.0.21
+
+# Manejo de datos
+pandas==2.1.1
+
+# Sensores
+RPi.GPIO==0.7.1
+Adafruit-DHT==1.4.0
+
+# Utilidades
+python-dotenv==1.0.0 

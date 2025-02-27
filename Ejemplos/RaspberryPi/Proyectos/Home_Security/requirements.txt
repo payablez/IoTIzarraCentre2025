@@ -1,0 +1,13 @@
+# Bibliotecas principales
+RPi.GPIO==0.7.1
+picamera==1.13
+Flask==2.3.3
+
+# Dependencias para el manejo de fechas y tiempo
+python-dateutil==2.8.2
+
+# Base de datos
+sqlite3
+
+# Bibliotecas para envío de correos
+secure-smtplib==0.1.1 

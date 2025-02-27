@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Seguridad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .status-active {
+            background-color: #28a745;
+        }
+        .status-inactive {
+            background-color: #dc3545;
+        }
+        .event-card {
+            margin-bottom: 15px;
+        }
+        .event-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Sistema de Seguridad</h1>
+        
+        <!-- Panel de Estado -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Estado del Sistema</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <span class="status-indicator" id="system-status"></span>
+                            Estado: <span id="status-text">Cargando...</span>
+                        </p>
+                        <p>
+                            <span class="status-indicator" id="motion-status"></span>
+                            Movimiento: <span id="motion-text">No detectado</span>
+                        </p>
+                        <p>Última detección: <span id="last-detection">Ninguna</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-lg btn-danger" id="arm-button">
+                            ACTIVAR SISTEMA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista de Eventos -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Últimos Eventos</h5>
+            </div>
+            <div class="card-body">
+                <div id="events-list">
+                    <p class="text-center">Cargando eventos...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Actualizar estado cada 5 segundos
+        function updateStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    const systemStatus = document.getElementById('system-status');
+                    const statusText = document.getElementById('status-text');
+                    const armButton = document.getElementById('arm-button');
+                    
+                    systemStatus.className = 'status-indicator ' + 
+                        (data.armed ? 'status-active' : 'status-inactive');
+                    statusText.textContent = data.armed ? 'Armado' : 'Desarmado';
+                    armButton.textContent = data.armed ? 'DESACTIVAR SISTEMA' : 'ACTIVAR SISTEMA';
+                    armButton.className = 'btn btn-lg ' + 
+                        (data.armed ? 'btn-warning' : 'btn-danger');
+                    
+                    const motionStatus = document.getElementById('motion-status');
+                    const motionText = document.getElementById('motion-text');
+                    motionStatus.className = 'status-indicator ' + 
+                        (data.motion_detected ? 'status-active' : 'status-inactive');
+                    motionText.textContent = data.motion_detected ? 'Detectado' : 'No detectado';
+                    
+                    const lastDetection = document.getElementById('last-detection');
+                    if (data.last_detection) {
+                        const date = new Date(data.last_detection);
+                        lastDetection.textContent = date.toLocaleString();
+                    } else {
+                        lastDetection.textContent = 'Ninguna';
+                    }
+                });
+        }
+
+        // Actualizar eventos
+        function updateEvents() {
+            fetch('/api/events')
+                .then(response => response.json())
+                .then(events => {
+                    const eventsList = document.getElementById('events-list');
+                    if (events.length === 0) {
+                        eventsList.innerHTML = '<p class="text-center">No hay eventos registrados</p>';
+                        return;
+                    }
+                    
+                    eventsList.innerHTML = events.map(event => `
+                        <div class="card event-card">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    ${new Date(event.timestamp).toLocaleString()}
+                                </h6>
+                                <p class="card-text">
+                                    <strong>${event.type}:</strong> ${event.description}
+                                </p>
+                                ${event.image ? `
+                                    <img src="/${event.image}" class="event-image" 
+                                         alt="Imagen del evento">
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                });
+        }
+
+        // Manejar activación/desactivación del sistema
+        document.getElementById('arm-button').addEventListener('click', function() {
+            const currentState = this.textContent.includes('ACTIVAR');
+            fetch('/api/arm', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    armed: currentState
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateStatus();
+                    updateEvents();
+                }
+            });
+        });
+
+        // Actualizar datos periódicamente
+        setInterval(updateStatus, 5000);
+        setInterval(updateEvents, 10000);
+        
+        // Actualización inicial
+        updateStatus();
+        updateEvents();
+    </script>
+</body>
+</html> 

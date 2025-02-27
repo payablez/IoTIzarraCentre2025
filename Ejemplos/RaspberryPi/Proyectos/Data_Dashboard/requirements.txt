@@ -1,0 +1,21 @@
+# Framework web y templates
+Flask==2.3.3
+Flask-SocketIO==5.3.6
+
+# Manejo de datos
+pandas==2.1.1
+numpy==1.24.3
+
+# Visualización
+plotly==5.17.0
+dash==2.13.0
+
+# Base de datos
+SQLAlchemy==2.0.21
+
+# Comunicación MQTT
+paho-mqtt==1.6.1
+
+# Utilidades
+python-dotenv==1.0.0
+requests==2.31.0 

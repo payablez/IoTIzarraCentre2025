@@ -1,0 +1,20 @@
+# Bibliotecas necesarias para la Estación Meteorológica
+# Instalar desde el Gestor de Bibliotecas de Arduino IDE
+
+# Sensores
+DHT sensor library by Adafruit (3.1.0 o superior)
+Adafruit BMP085 Library (1.2.1 o superior)
+
+# Pantalla LCD
+LiquidCrystal I2C by Frank de Brabander (1.1.2 o superior)
+
+# Almacenamiento
+SD (incluida en Arduino IDE)
+SPI (incluida en Arduino IDE)
+
+# WiFi y MQTT
+ESP8266WiFi (2.7.4 o superior)
+PubSubClient by Nick O'Leary (2.8.0 o superior)
+
+# Utilidades
+ArduinoJson by Benoit Blanchon (6.19.4 o superior) 
