@@ -1,0 +1,3 @@
+# Bibliotecas requeridas para el sensor DHT11
+DHT sensor library by Adafruit (3.1.0 o superior)
+Adafruit Unified Sensor (1.1.6 o superior) 

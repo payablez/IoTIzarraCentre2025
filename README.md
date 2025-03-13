@@ -1,6 +1,55 @@
 # Formación IoT
 
-Este repositorio contiene ejemplos prácticos de código para el aprendizaje de IoT, utilizando Arduino y Raspberry Pi. Los ejemplos están diseñados para proporcionar una base sólida en el desarrollo de aplicaciones IoT.
+Este repositorio está diseñado para impartir formación práctica en IoT, utilizando dispositivos finales, TTGO con Lora, Arduino y Raspberry Pi. Los ejemplos están estructurados para proporcionar una base sólida en el desarrollo de aplicaciones IoT, permitiendo a los estudiantes aprender y experimentar con diferentes tecnologías y conceptos.
+
+Cada grupo deberá crear una carpeta "Grupo N", donde añadirá toda la información del proyecto. Debe incluir obligatoriamente el decodificador/codificador de Chirpstack y el código necesario para la aplicación.
+
+# Instrucciones para Trabajo en Equipo con Git
+
+## 1. Configuración Inicial (una sola vez)
+```bash
+# Clonar el repositorio
+git clone https://github.com/tuusuario/IoTIzarraCentre2025.git
+cd IoTIzarraCentre2025
+
+# Configurar usuario de Git
+git config user.name "Tu Nombre"
+git config user.email "tu.email@ejemplo.com"
+```
+
+## 2. Crear Branch para tu Grupo
+```bash
+# Crear y cambiar a tu rama
+git checkout -b grupo-N  # Donde N es el número de tu grupo
+```
+
+## 3. Flujo de Trabajo Diario
+```bash
+# 1. Actualizar tu rama con los últimos cambios
+git checkout main
+git pull origin main
+git checkout grupo-N
+git merge main
+
+# 2. Realizar tus cambios en la carpeta de tu grupo
+# Grupos/Grupo N/...
+
+# 3. Añadir y commitear cambios
+git add Grupos/Grupo\ N/
+git commit -m "Descripción clara del cambio"
+
+# 4. Subir cambios a GitHub
+git push origin grupo-N
+```
+
+## 4. Reglas Importantes
+1. Trabajar SOLO en la carpeta de tu grupo (`Grupos/Grupo N/`)
+2. No modificar archivos fuera de tu carpeta
+3. Mantener la estructura de carpetas definida
+4. Incluir siempre un README.md en tu carpeta con:
+   - Nombres de los integrantes
+   - Descripción del proyecto
+   - Instrucciones de instalación/uso
 
 ## 🌟 Características
 
@@ -53,10 +102,15 @@ IoTIzarraCentre2025/
 │           ├── Data_Dashboard/
 │           └── Home_Security/
 │
+├── Grupos/
+│   └── Grupo 1..N/
+│       ├── Chirpstack/
+│       └── Aplicacion/
+│       └── Readme.md
+│
 └── docs/
-    ├── instalacion.md
-    ├── guia_inicio.md
-    └── troubleshooting.md
+    └── chirpstack/
+        ├── configuracion_inicial.md      # Guía de configuración en ChirpStack Ermua
 ```
 
 ## 🛠️ Requisitos Previos
@@ -77,6 +131,13 @@ Cada proyecto de Raspberry Pi tiene su propio archivo `requirements.txt` con las
 - **Comunicación**: paho-mqtt, requests
 - **Visualización**: plotly, dash
 - **Sensores**: Adafruit-DHT, picamera
+
+### Configuración ChirpStack Ermua:
+- Credenciales de acceso a ChirpStack
+- Información del Gateway de Ermua:
+  - Frecuencia: EU868
+  - Canales disponibles
+  - Configuración regional: EU868
 
 ## 📥 Instalación
 
