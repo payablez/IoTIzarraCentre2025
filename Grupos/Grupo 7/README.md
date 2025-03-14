@@ -1,9 +1,10 @@
 # Grupo 7
 
 ## Integrantes
-- [Nombre del integrante 1]
-- [Nombre del integrante 2]
-- [Nombre del integrante 3]
+- Gaizka Vecino
+- Ubai Perez
+- Aritz Arruabarrena
+- Aner Rodriguez
 
 ## Descripción del Proyecto
 [Breve descripción del proyecto que desarrollarán]
