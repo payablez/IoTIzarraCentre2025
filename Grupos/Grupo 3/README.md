@@ -1,16 +1,28 @@
 # Grupo 3
 
 ## Integrantes
-- [Nombre del integrante 1]
-- [Nombre del integrante 2]
-- [Nombre del integrante 3]
+- Jon Telleria
+- Joel Sierra
+- Josu Alvarez
+- Aner
+- Ander Azpiazu
 
 ## Descripción del Proyecto
 [Breve descripción del proyecto que desarrollarán]
 
 ## Estructura
-- `Chirpstack/`: Contiene los archivos de codificación/decodificación para ChirpStack
-- `Aplicacion/`: Contiene el código de la aplicación principal
+- `Chirpstack/`: 
+
+- `Aplicacion/`: 
+
+<img src="img/node.png" alt="Interfaz de la app" width="500">
+HTTP: API-ari POST deia egiteko balio du, datuak lortzeko CHIRPSTACK
+FUNCTION-ak zuk nahi dituzun datuak bakarrik jasotzeko balio du
+RESPONSE API-a funtzionamenduan dagoela jakiteko balio du.
+INFLUX: datuak datubasera sartzeko.
+
+<img src="img/dato.png" alt="Interfaz de la app" width="500">
+<img src="img/explicacion.png" alt="Interfaz de la app" width="500">
 
 ## Instrucciones de Instalación
 [Instrucciones específicas de instalación]
