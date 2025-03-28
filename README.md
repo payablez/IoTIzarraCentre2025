@@ -17,7 +17,7 @@ git config user.name "Tu Nombre"
 git config user.email "tu.email@ejemplo.com"
 ```
 
-## 2. Crear Branch para tu Grupo
+## 2. Crear Branch para tu Grupo Fari
 ```bash
 # Crear y cambiar a tu rama
 git checkout -b grupo-N  # Donde N es el número de tu grupo
