@@ -1,0 +1,1 @@
+Empezar con influx y grafana, detallar como va a funcionar el carro que contiene la cámara y motores preparados y estructura general del carro hecho.
