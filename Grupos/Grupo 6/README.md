@@ -1,9 +1,10 @@
 # Grupo 6
 
 ## Integrantes
-- [Nombre del integrante 1]
-- [Nombre del integrante 2]
-- [Nombre del integrante 3]
+- [Sergio Lopez]
+- [Erik Montero]
+- [Mikel Perez]
+- [Ignacio Arrizabalaga]
 
 ## Descripción del Proyecto
 [Breve descripción del proyecto que desarrollarán]
