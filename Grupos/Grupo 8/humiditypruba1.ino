@@ -5,8 +5,8 @@
 #include <DHT.h>
 
 // Configuración de pantalla OLED
-#define SCREEN_WIDTH 64
-#define SCREEN_HEIGHT 32
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
@@ -26,7 +26,7 @@ void setup() {
     }
 
     display.clearDisplay();
-    display.setTextSize(1);
+    display.setTextSize(1,3);
     display.setTextColor(WHITE);
     display.setCursor(0, 0);
     display.println("Inicializando...");
@@ -45,7 +45,7 @@ void loop() {
 
     // Mostrar en la pantalla OLED
     display.clearDisplay();
-    display.setTextSize(2);
+    display.setTextSize(1,4);
     display.setCursor(0, 10);
     display.println("Temp: " + String(t) + "C");
     display.setCursor(0, 35);
