@@ -1,10 +1,9 @@
 # Grupo 3
-
 ## Integrantes
 - Jon Telleria
 - Joel Sierra
 - Josu Alvarez
-- Aner
+- Aner García
 - Ander Azpiazu
 
 ## Descripción del Proyecto
