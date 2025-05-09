@@ -1,16 +1,22 @@
 # Grupo 4
 
 ## Integrantes
-- [Nombre del integrante 1]
-- [Nombre del integrante 2]
-- [Nombre del integrante 3]
+- Edurne Murua
+- Naroa Maiztegui
+- Naroa Zubizarreta
+- Peru Malatsetxebarria
+- Sandra Hidalgo
 
 ## Descripción del Proyecto
 [Breve descripción del proyecto que desarrollarán]
 
+InfluxDB: http://formacioniot2025.devlon.es:8085/
+Grifana: http://formacioniot2025.devlon.es:8083
+NodeRed: http://formacioniot2025.devlon.es
+
 ## Estructura
-- `Chirpstack/`: Contiene los archivos de codificación/decodificación para ChirpStack
-- `Aplicacion/`: Contiene el código de la aplicación principal
+- `FinalWork/`: Contiene el código de la aplicación principal
+- `Documentation/`: Contiene la documentación y la presentación
 
 ## Instrucciones de Instalación
 [Instrucciones específicas de instalación]
