@@ -22,6 +22,7 @@ INFLUX: datuak datubasera sartzeko.
 
 <img src="img/dato.png" alt="Interfaz de la app" width="500">
 <img src="img/explicacion.png" alt="Interfaz de la app" width="500">
+<img src="img/Tracker.png" alt="Interfaz de la app" width="500">
 
 ## Instrucciones de Instalación
 [Instrucciones específicas de instalación]
