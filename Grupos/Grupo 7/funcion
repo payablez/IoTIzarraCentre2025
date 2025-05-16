@@ -1,0 +1,65 @@
+// Extraer el payload recibido
+var payload = msg.payload;
+
+// Extraer info del dispositivo
+var deviceName = payload.deviceInfo.deviceName;
+var deviceType = payload.deviceInfo.deviceProfileName;
+var devEui = payload.deviceInfo.devEui;
+
+// Etiquetas
+var tags = {
+    dispositivo: deviceName,
+    devEUI: devEui,
+    tipo: deviceType
+};
+
+// Campos numéricos
+var fields = {};
+
+// Convertir valores reales del objeto
+if (payload.object && typeof payload.object === 'object') {
+    if ("PM2_5" in payload.object) {
+        fields.pm2_5 = Number(payload.object.PM2_5);
+    }
+    if ("PM10" in payload.object) {
+        fields.pm10 = Number(payload.object.PM10);
+    }
+    if ("BatV" in payload.object) {
+        fields.bateria = Number(payload.object.BatV);
+    }
+}
+
+// Señal y localización
+if (payload.rxInfo && payload.rxInfo.length > 0) {
+    var rx = payload.rxInfo[0];
+
+    if (rx.rssi !== undefined) {
+        fields.rssi = Number(rx.rssi);
+    }
+    if (rx.snr !== undefined) {
+        fields.snr = Number(rx.snr);
+    }
+    if (rx.location) {
+        fields.latitud = Number(rx.location.latitude);
+        fields.longitud = Number(rx.location.longitude);
+    }
+}
+
+// Validación
+if (Object.keys(fields).length === 0) {
+    node.warn("❌ No se encontraron datos numéricos válidos");
+    return null;
+}
+
+// Timestamp en nanosegundos desde el campo time
+var timestamp = new Date(payload.time).getTime() * 1000000;
+
+// Construir payload para InfluxDB
+msg.payload = {
+    measurement: "datos",
+    tags: tags,
+    fields: fields,
+    timestamp: timestamp
+};
+
+return msg;
