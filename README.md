@@ -51,7 +51,7 @@ git push origin grupo-N
    - Descripción del proyecto
    - Instrucciones de instalación/uso
 
-## 🌟 Características
+## Visualización
 
 - Ejemplos básicos y avanzados para Arduino
 - Ejemplos básicos y avanzados para Raspberry Pi
