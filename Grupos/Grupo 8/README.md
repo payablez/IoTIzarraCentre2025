@@ -69,3 +69,18 @@ from(bucket: "grupo8")
   )
   |> map(fn: (r) => ({ r with _value: float(v: r._value) }))
   |> aggregateWindow(every: 1m, fn: sum, createEmpty: false)
+
+// 📍 Consulta Flux en Grafana para visualizar la humedad
+from(bucket: "grupo8")
+  |> range(start: -3mo)
+  |> filter(fn: (r) =>
+    r._measurement == "probaa" and
+    r._field == "humedad"
+  )
+  |> map(fn: (r) => ({ r with _value: float(v: r._value) }))
+  |> aggregateWindow(every: 1m, fn: sum, createEmpty: false)
+
+
+
+
+
