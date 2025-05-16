@@ -42,5 +42,34 @@ Este sistema está pensado como una solución **de bajo coste, eficiente y autó
 
 ---
 
-## 🗂️ Estructura del Proyecto
+## 🧠 Lógica en Node-RED
+
+En este proyecto se utiliza Node-RED para procesar los datos enviados desde la placa LilyGO. En concreto, se emplea un nodo `function` para leer los valores de temperatura y humedad desde un objeto JSON.
+
+```javascript
+// 📍 Node-RED: Function Node
+// Extrae temperatura y humedad desde un mensaje JSON
+let temperatura = msg.payload.temperatura;
+let humedad = msg.payload.humedad;
+
+// Hora actual para posibles registros o visualización
+let horaActual = new Date().toLocaleString();
+
+// Mostrar los valores en el debug del flujo
+node.warn(`Temperatura: ${temperatura}, Humedad: ${humedad}`);
+
+// Devuelve el mensaje para los siguientes nodos
+return msg;
+
+## 🧠 Lógica en Grafana
+
+from(bucket: "grupo8")
+  |> range(start: -3mo)
+  |> filter(fn: (r) =>
+    r._measurement == "probaa" and
+    r._field == "temperatura"
+  )
+  |> map(fn: (r) => ({ r with _value: float(v: r._value) }))
+  |> aggregateWindow(every: 1m, fn: sum, createEmpty: false)
+
 
