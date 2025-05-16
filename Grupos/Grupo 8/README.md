@@ -1,13 +1,12 @@
-# Grupo 8
+# 🌿 Sistema de Riego Automático – Grupo 8
 
-# 🌿 Sistema de Riego Automático
+## 👥 Integrantes
 
-**Integrantes**  
-- [Alluitz Ortiz de Barron]  
-- [Ibone Zubiate]  
-- [Iker Nistal]  
-- [Jehangir Hayat]
-- [Julen Galindo]    
+- Alluitz Ortiz de Barron  
+- Ibone Zubiate  
+- Iker Nistal  
+- Jehangir Hayat  
+- Julen Galindo  
 
 ---
 
@@ -32,19 +31,19 @@ Este sistema está pensado como una solución **de bajo coste, eficiente y autó
 ## 🔧 Componentes Utilizados
 
 | Componente                     | Descripción                                                              |
-|--------------------------------|--------------------------------------------------------------------------|
-| Arduino LilyGO LoRa32          | Placa base con ESP32 y conectividad LoRa                                |
-| Sensor de humedad del suelo    | Sensor analógico para medir la humedad del sustrato                     |
-| Bomba de agua eléctrica        | Riega la planta automáticamente cuando se activa                        |
-| Módulo relé                    | Permite al Arduino encender o apagar la bomba                           |
-| Fuente de alimentación 5V–12V  | Suministra energía al sistema                                           |
-| Cables jumper                  | Utilizados para las conexiones entre los componentes                    |
+|-------------------------------|--------------------------------------------------------------------------|
+| Arduino LilyGO LoRa32         | Placa base con ESP32 y conectividad LoRa                                |
+| Sensor de humedad del suelo   | Sensor analógico para medir la humedad del sustrato                     |
+| Bomba de agua eléctrica       | Riega la planta automáticamente cuando se activa                        |
+| Módulo relé                   | Permite al Arduino encender o apagar la bomba                           |
+| Fuente de alimentación 5V–12V | Suministra energía al sistema                                           |
+| Cables jumper                 | Utilizados para las conexiones entre los componentes                    |
 
 ---
 
-## 🧠 Lógica en Node-RED
+## 🧠 Código y Visualización
 
-En este proyecto se utiliza Node-RED para procesar los datos enviados desde la placa LilyGO. En concreto, se emplea un nodo `function` para leer los valores de temperatura y humedad desde un objeto JSON.
+A continuación, se muestra la lógica implementada en **Node-RED** y la consulta utilizada en **InfluxDB/Grafana** para la visualización de los datos:
 
 ```javascript
 // 📍 Node-RED: Function Node
@@ -61,8 +60,7 @@ node.warn(`Temperatura: ${temperatura}, Humedad: ${humedad}`);
 // Devuelve el mensaje para los siguientes nodos
 return msg;
 
-## 🧠 Lógica en Grafana
-
+// 📍 Consulta Flux en Grafana para visualizar la temperatura
 from(bucket: "grupo8")
   |> range(start: -3mo)
   |> filter(fn: (r) =>
@@ -71,5 +69,3 @@ from(bucket: "grupo8")
   )
   |> map(fn: (r) => ({ r with _value: float(v: r._value) }))
   |> aggregateWindow(every: 1m, fn: sum, createEmpty: false)
-
-
