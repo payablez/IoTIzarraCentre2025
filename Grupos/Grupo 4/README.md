@@ -8,7 +8,9 @@
 - Sandra Hidalgo
 
 ## Descripción del Proyecto
-[Breve descripción del proyecto que desarrollarán]
+Hemos tenido que hacer un proyecto de un paso de cebra, en el cual cuando algún peaon lo pase en rojo se le colocará una multa.
+Hemos usado un sensor que detecta a los peatones, con una Raspberry Pi 4 hemos controlado el sistema, con un sensor PIR hemos hecho la detección de movimiento.
+Tras recibir estos datos nuestro programa envía automáticamente los datos a Node-Red, en el cual enviamos los datos a Influx DB para que muestre en una gráfica.
 
 InfluxDB: http://formacioniot2025.devlon.es:8085/
 Grifana: http://formacioniot2025.devlon.es:8083
