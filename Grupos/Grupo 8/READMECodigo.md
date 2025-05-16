@@ -66,7 +66,7 @@ Instala las librerías desde el Gestor de Librerías del IDE o `platformio.ini`.
     const char* serverName = "http://formacioniot2025.devlon.es/grupo8";
     ```
  ## Arduino Codigo
-```arduino
+```ino
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
